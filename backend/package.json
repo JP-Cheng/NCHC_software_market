@@ -1,0 +1,15 @@
+{
+  "name": "autoMakeDockerfile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "autoMakeDockerfile.test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^26.3.0"
+  }
+}
