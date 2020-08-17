@@ -6,12 +6,33 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import GoodsCard from './component/GoodsCard';
 import goodsDescription from './component/goodsDesctiption.json';
+import ConfirmCart from './component/ConfirmKart';
 
 class App extends React.Component {
   constructor (props) {
     super(props);
-    this.state = { hello: true };
+    this.state = {
+      showCart: false,
+      CartItems: []
+    };
   }
+
+  toggle = () => this.setState((prevState) => ({
+    showCart: !prevState.showCart
+  }));
+
+  addProductToCart = (product) => {
+    let CartItems = this.state.CartItems;
+    CartItems.push(product);
+    this.setState({ CartItems });
+  };
+
+  deleteCartItem = (index) => {
+    let CartItems = this.state.CartItems;
+    CartItems.splice(index, 1);
+    this.setState({ CartItems });
+  };
+
 
   render() {
     return (
@@ -25,17 +46,26 @@ class App extends React.Component {
             <hr className='division line'></hr>
             <Button color='primary'
               style={{ width: '7em' }}
-              onClick={() => (this.setState((prevState) => ({
-                hello: !prevState.hello
-              })
-              ))}>
-              {this.state.hello ? "購物車" : "不要亂點辣"}
+              onClick={this.toggle}>
+              {`購物車 (${this.state.CartItems.length}) `}
             </Button>
+            <ConfirmCart
+              show={this.state.showCart}
+              toggle={this.toggle}
+              BoughtItems={this.state.CartItems}
+              deleteAnItem={this.deleteCartItem} />
           </Jumbotron>
 
           <CardDeck sm='3'>
             {goodsDescription.map(aGoods => (
-              <GoodsCard goods={aGoods} />
+              <GoodsCard
+                key={goodsDescription.indexOf(aGoods)}
+                goods={aGoods}
+                addProductToCart={() => this.addProductToCart(aGoods)}
+                alreadyBought={this.state.CartItems.find(
+                  item =>
+                    item.title === aGoods.title
+                )} />
             ))}
           </CardDeck>
         </Container>

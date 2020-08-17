@@ -9,7 +9,7 @@ import {
 } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
-export default ({ goods }) => {
+export default ({ goods, addProductToCart, alreadyBought }) => {
   return (
     <Card style={{ margin: '2pt' }}>
       <CardBody style={{ textAlign: 'left' }}>
@@ -23,8 +23,9 @@ export default ({ goods }) => {
         <CardText>
           {goods.text}
         </CardText>
-        <Button>Buy</Button>
+        <Button onClick={addProductToCart}
+          disabled={alreadyBought}>Buy</Button>
       </CardBody>
     </Card>
   );
-}
+};
