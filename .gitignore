@@ -6,7 +6,7 @@
 *.pnp.js
 
 # dev reference
-./流程圖.key
+流程圖.key
 
 # testing
 */coverage
