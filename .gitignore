@@ -6,7 +6,7 @@
 *.pnp.js
 
 # dev reference
-*.png
+*.key
 
 # testing
 */coverage
