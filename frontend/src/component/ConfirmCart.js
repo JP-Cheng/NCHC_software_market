@@ -30,8 +30,11 @@ export default ({ show, toggle, BoughtItems, deleteAnItem }) => {
         </Table>
       </ModalBody>
       <ModalFooter>
-        <Button color="primary" onClick={toggle}>確認</Button>{' '}
-        <Button color="secondary" onClick={toggle}>取消</Button>
+        <Button color="primary"
+          onClick={toggle}
+          disabled={BoughtItems.length === 0}>
+          確認購買</Button>{' '}
+        <Button color="secondary" onClick={toggle}>返回</Button>
       </ModalFooter>
     </Modal>);
 };

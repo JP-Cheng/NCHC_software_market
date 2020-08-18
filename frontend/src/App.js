@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-  Button, Container, CardDeck, Jumbotron,
+  Button, Container, CardDeck, Jumbotron, Row, Card
 } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import GoodsCard from './component/GoodsCard';
 import goodsDescription from './component/goodsDesctiption.json';
-import ConfirmCart from './component/ConfirmKart';
+import ConfirmCart from './component/ConfirmCart';
 
 class App extends React.Component {
   constructor (props) {
@@ -56,12 +56,12 @@ class App extends React.Component {
               deleteAnItem={this.deleteCartItem} />
           </Jumbotron>
 
-          <CardDeck sm='3'>
+          <CardDeck>
             {goodsDescription.map(aGoods => (
               <GoodsCard
                 key={goodsDescription.indexOf(aGoods)}
                 goods={aGoods}
-                addProductToCart={() => this.addProductToCart(aGoods)}
+                addProductToCart={this.addProductToCart}
                 alreadyBought={this.state.CartItems.find(
                   item =>
                     item.title === aGoods.title

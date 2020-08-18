@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 export default ({ goods, addProductToCart, alreadyBought }) => {
   return (
-    <Card style={{ margin: '2pt' }}>
+    <Card style={{ margin: '2pt' }} >
       <CardBody style={{ textAlign: 'left' }}>
         <CardTitle style={{ textAlign: 'center', fontSize: '20pt', fontWeight: 'bold' }}>
           {goods.title}
@@ -23,7 +23,7 @@ export default ({ goods, addProductToCart, alreadyBought }) => {
         <CardText>
           {goods.text}
         </CardText>
-        <Button onClick={addProductToCart}
+        <Button onClick={() => addProductToCart(goods)}
           disabled={alreadyBought}>Buy</Button>
       </CardBody>
     </Card>
