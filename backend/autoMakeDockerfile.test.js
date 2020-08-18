@@ -1,5 +1,5 @@
 const dockerPackages = require('./dockerPackage.json');
-const { autoMakeDockerfile } = require('./tryAutoMakeDockerfile');
+const { autoMakeDockerfile } = require('./autoMakeDockerfile');
 const fs = require('fs');
 
 describe('Hello, jest!', () => {
