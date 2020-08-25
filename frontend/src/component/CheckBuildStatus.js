@@ -3,53 +3,28 @@ import styled from 'styled-components';
 const exampleJson = require('./dockerBuildStatus.json');
 
 export default () => {
+  const Td = styled.td`padding: 3pt;`;
 
   const statusRenderer = (status) => {
-    if (status === "T")
-      return (<button style={{
-        backgroundColor: '#00FF7F',
-        border: 'none',
-        color: 'white',
-        padding: '12px',
-        textAlign: 'center',
-        textDecoration: 'none',
-        display: 'inline-block',
-        fontSize: '16px',
-        margin: '4px 2px',
-        borderRadius: '75%'
-      }}></button>);
-    else if (status === "F")
-      return (<button style={{
-        backgroundColor: '#FF6347',
-        border: 'none',
-        color: 'white',
-        padding: '12px',
-        textAlign: 'center',
-        textDecoration: 'none',
-        display: 'inline-block',
-        fontSize: '16px',
-        margin: '4px 2px',
-        borderRadius: '75%'
-      }}></button>);
+    const Button = styled.button`
+      border: none;
+      color: white;
+      padding: 12px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      border-radius: 75%;
+    `;
+    if (status === true)
+      return (<Button style={{ backgroundColor: '#00FF7F' }}></Button>);
     else
-      return (<button style={{
-        backgroundColor: '#C0C0C0',
-        border: 'none',
-        color: 'white',
-        padding: '12px',
-        textAlign: 'center',
-        textDecoration: 'none',
-        display: 'inline-block',
-        fontSize: '16px',
-        margin: '4px 2px',
-        borderRadius: '75%'
-      }}></button>);
+      return (<Button style={{ backgroundColor: '#FF6347' }}></Button>);
   };
 
-  const Td = styled.td`padding: 2.5pt;`;
-
   return (
-    <table>
+    <table style={{ textAlign: 'center' }}>
       <thead>
         <tr><th>  description  </th><th> value </th></tr>
       </thead>
