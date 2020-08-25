@@ -1,0 +1,12 @@
+{
+  "name": "sample",
+  "triggerTime": "2020-0825-1109",
+  "sourceUpdate": "T",
+  "scriptUpdate": "T",
+  "fetch": "T",
+  "build": "F",
+  "commit": "null",
+  "version": "0.0.0",
+  "lastUpdate": "2020-0706-0900",
+  "lastSuccessfulUpdate": "2020-0630-1800"
+}
