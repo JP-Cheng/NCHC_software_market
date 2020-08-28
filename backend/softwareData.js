@@ -4,13 +4,16 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const fs = require('fs');
+const { SearchSource } = require('jest');
 
 
 
 const dbRoute = 'mongodb://visitor:123456@203.145.221.232:27017/softwareMarket';
-mongoose.connect(dbRoute, { useNewUrlParser: true , useUnifiedTopology: true });
+mongoose.connect(dbRoute, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.on('connected', function () {
-    console.log("connected to the database")
+    console.log("connected to the database");
+    //mongodb的表格名稱最後要加s, mongoose的表格名稱要少一個s
+
     var Model = mongoose.model('software_data', new mongoose.Schema({
         "name": { type: String, require: true },
         "domain": { type: String },
@@ -27,6 +30,7 @@ mongoose.connection.on('connected', function () {
         "web site": { type: String },
         "citation": { type: String }
     }));
+    
     // //Insert
     // const content_i = { "name": "Centos", "domain": "public", "version": "8.0.1905", "web site": "https://wiki.centos.org/FrontPage"}
     // const stuffInsert = new Model(content_i)
@@ -38,28 +42,33 @@ mongoose.connection.on('connected', function () {
     //     }
     // });
     //Search
-    const content_s = {name: "Centos"};
-    const field = {name: 1, domain: 1, version: 1 };
-    Model.find(content_s, field, function(err, result){
-        if(err){
-           console.log(err);
-        }else{
-            const str = JSON.stringify(result[0])
-            fs.writeFile("./result.json", str, function (err) {
-                if (err) {
-                    console.log(err)
-                }
-                console.log("File Written！")
-            })
 
-        }
-    })
+    const content_s = { name: "Mysql" };
+    search(content_s, {}, Model, "result", "Software data file written！");
+    
+    
+    
+    function search(content, field, model, filename, info) {
+        model.find(content, field, function (err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                let str = JSON.stringify(result[0],null,"\t")
+                fs.writeFile("./" + filename + ".json", str, function (err) {
+                    if (err) {
+                        console.log(err)
+                    }
+                    console.log(info)
+                })
+            }
+        });
+    };
 });
-    // foo().then()
+
+// foo().then()
 mongoose.connection.then(() => mongoose.disconnect());
 mongoose.connection.catch(err => console.log('cannot connect'));
 
-    
 
-    
+
 
