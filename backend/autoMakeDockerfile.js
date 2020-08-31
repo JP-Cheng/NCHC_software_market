@@ -12,11 +12,12 @@ const convertPackageArrayToDockerCommandArray = (aPackageArray, aJsonFile) => {
 
 const removeSubArray = (anArray) => {
   let dealtArray = [];
-  anArray.forEach(element => {
+  anArray.forEach(async element => {
     if (Array.isArray(element))
-      element.forEach(subArrayElement => dealtArray.push(subArrayElement));
+      await element.forEach(subArrayElement =>
+        dealtArray.push(subArrayElement));
     else
-      dealtArray.push(element);
+      await dealtArray.push(element);
   });
   return dealtArray;
 };
@@ -35,14 +36,14 @@ module.exports = {
         aDockerCommandArrayWithoutSubArray.forEach(
           async element => {
             if (aDockerCommandArrayWithoutSubArray.indexOf(element) === 0)
-              await exec(`echo FROM ${element} > ${dockerfile}`)
+              await exec(`echo 'FROM ${element}' > ./${dockerfile}`)
                 .catch(err => console.log(err));
             else
-              await exec(`echo RUN ${element} >> ${dockerfile}`)
+              await exec(`echo 'RUN ${element}' >> ./${dockerfile}`)
                 .catch(err => console.log(err));
           });
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     }
 };

@@ -18,7 +18,7 @@ describe('Hello, jest!', () => {
 });
 
 describe('test autoMakeDockerfile module', () => {
-  const testRecipe = ["CentOS", "git", "g++"];
+  const testRecipe = ["CentOS", "g++", "hello"];
   autoMakeDockerfile(testRecipe, dockerPackages);
   it('test whether generating correct dockerfile', () => {
     fs.readFile('./Dockerfile', (err, data) => {

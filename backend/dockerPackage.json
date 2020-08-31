@@ -5,10 +5,7 @@
   },
   "packages": {
     "git": "yum -y install git-all",
-    "g++": [
-      "yum install -y centos-release-scl",
-      "install -y devtoolset-9-gcc devtoolset-9-gcc-c++",
-      "scl enable devtoolset-9 bash"
-    ]
+    "g++": "yum install -y centos-release-scl && yum install -y devtoolset-9-gcc devtoolset-9-gcc-c++ && scl enable devtoolset-9 bash",
+    "hello": "make && make clean"
   }
 }
