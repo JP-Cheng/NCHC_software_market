@@ -1,5 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Description
+There are currently three components in `frontend/src/component`, `CheckBuildStatus, ConfirmCart,` and `GoodsCard`, respectively. Example usage are in `App.js`.  
+
+- `CheckBuildStatus` accepts a json object, expected to be drawn from db but currently use `./dockerBuildStatus.json`. The .json file contains the following info, of type of `string` or `bool`.  
+  
+  This component shows the building process of a Dockerfile. One can post the info to the backend and then render them via this component.  
+  
+  ![](https://i.imgur.com/tYFwdC2.png)  
+  
+- `ConfirmCart` and `GoodsCard` are in a group to realize a shopping cart model. The former allows users to confirm the software they have selected in a table; the latter helps to render the goods' infomation, whose examples correspond to the objects in `goodsDescription.json`.   
+
 ## Available Scripts
 
 In the project directory, you can run:
