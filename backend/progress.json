@@ -1,0 +1,13 @@
+{
+	"_id": "5f44ab70ace7c814ee3dca14",
+	"name": "Centos",
+	"triggerTime": "2020-0825-1406",
+	"sourceUpdate": true,
+	"scriptUpdate": true,
+	"fetch": true,
+	"build": true,
+	"commit": false,
+	"version": "10.1.0",
+	"lastUpdate": "2020-0726-0800",
+	"lastSuccessfulUpdate": "2020-0630-1800"
+}
